@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/dir', 'RecordController@createDir');
-Route::get('/dirs', 'RecordController@listDirs');
-Route::post('/{dir_name}/record', 'RecordController@uploadRecordToDir');
-Route::get('/{dir_name}/records', 'RecordController@listRecordsInDir');
+Route::post('/dir', 'App\Http\Controllers\RecordController@createDir');
+Route::get('/dirs', 'App\Http\Controllers\RecordController@listDirs');
+Route::post('/{dir_name}/record', 'App\Http\Controllers\RecordController@uploadRecordToDir');
+Route::get('/{dir_name}/records', 'App\Http\Controllers\RecordController@listRecordsInDir');
