@@ -30,11 +30,26 @@ class RecordController extends Controller
         return $response;
     }
 
+    public function deleteDir(Request $request) {
+        $params = $request->all();
+        $response = Storage::disk('record')->deleteDirectory($params['dir_name']);
+        return $response;
+    }
+
     public function uploadRecordToDir(Request $request) {
 
     }
 
-    public function listRecordsInDir(Request $request) {
+    public function deleteRecordInDir(Request $request) {
+        $dirName = $request->route('dir_name');
+        $params = $request->all();
+        $response = Storage::disk('record')->delete($dirName . '/' . $params['file_name']);
+        return $response;
+    }
 
+    public function listRecordsInDir(Request $request) {
+        $dirName = $request->route('dir_name');
+        $response = Storage::disk('record')->files($dirName);
+        return $response;
     }
 }

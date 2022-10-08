@@ -20,6 +20,8 @@ $router->get('/', function () use ($router) {
 $router->group([], function () use ($router) {
     $router->post('/dir', 'RecordController@createDir');
     $router->get('/dirs', 'RecordController@listDirs');
+    $router->delete('/dir', 'RecordController@deleteDir');
     $router->post('/{dir_name}/record', 'RecordController@uploadRecordToDir');
     $router->get('/{dir_name}/records', 'RecordController@listRecordsInDir');
+    $router->delete('/{dir_name}/records', 'RecordController@deleteRecordInDir');
 });
