@@ -23,5 +23,5 @@ $router->group([], function () use ($router) {
     $router->delete('/dir', 'RecordController@deleteDir');
     $router->post('/{dir_name}/record', 'RecordController@uploadRecordToDir');
     $router->get('/{dir_name}/records', 'RecordController@listRecordsInDir');
-    $router->delete('/{dir_name}/records', 'RecordController@deleteRecordInDir');
+    $router->delete('/{dir_name}/record', 'RecordController@deleteRecordInDir');
 });

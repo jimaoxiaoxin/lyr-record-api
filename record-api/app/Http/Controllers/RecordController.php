@@ -8,16 +8,6 @@ use Illuminate\Support\Facades\Storage;
 
 class RecordController extends Controller
 {
-    private $path = "/var/www/data/records";
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
 
     public function createDir(Request $request) {
         $params = $request->all();
@@ -37,7 +27,9 @@ class RecordController extends Controller
     }
 
     public function uploadRecordToDir(Request $request) {
-
+        $dirName = $request->route('dir_name');
+        $path = Storage::disk('record')->putFile($dirName, $request->file('record'));
+        return $path;
     }
 
     public function deleteRecordInDir(Request $request) {
