@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/dir', 'RecordController@createDir');
+Route::get('/dirs', 'RecordController@listDirs');
+Route::post('/{dir_name}/record', 'RecordController@uploadRecordToDir');
+Route::get('/{dir_name}/records', 'RecordController@listRecordsInDir');
