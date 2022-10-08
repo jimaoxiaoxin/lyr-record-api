@@ -20,11 +20,13 @@ class RecordController extends Controller
     }
 
     public function createDir(Request $request) {
-
+        $params = $request->all();
+        $response = Storage::disk('record')->makeDirectory($params['dir_name']);
+        return $response;
     }
 
     public function listDirs(Request $request) {
-        $response = Storage::directories($this->path);
+        $response = Storage::disk('record')->directories();
         return $response;
     }
 
