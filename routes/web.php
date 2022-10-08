@@ -16,3 +16,10 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group([], function () use ($router) {
+    $router->post('/dir', 'RecordController@createDir');
+    $router->get('/dirs', 'RecordController@listDirs');
+    $router->post('/{dir_name}/record', 'RecordController@uploadRecordToDir');
+    $router->get('/{dir_name}/records', 'RecordController@listRecordsInDir');
+});

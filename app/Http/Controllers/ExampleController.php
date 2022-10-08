@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
-class ExampleController extends Controller
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+
+class RecordController extends Controller
 {
+    private $path = "/var/www/data/records";
     /**
      * Create a new controller instance.
      *
@@ -14,5 +19,20 @@ class ExampleController extends Controller
         //
     }
 
-    //
+    public function createDir(Request $request) {
+
+    }
+
+    public function listDirs(Request $request) {
+        $response = Storage::directories($this->path);
+        return $response;
+    }
+
+    public function uploadRecordToDir(Request $request) {
+
+    }
+
+    public function listRecordsInDir(Request $request) {
+
+    }
 }
