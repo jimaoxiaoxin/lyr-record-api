@@ -26,6 +26,10 @@ class RecordController extends Controller
         return $response;
     }
 
+    public function downloadRecordsInDir(Request $request) {
+        return Storage::disk('record')->url('test1/7SU9QxUfKdftktkMkayJ0C2nqeSZa6zsomn1gRNt.mp3');
+    }
+
     public function uploadRecordToDir(Request $request) {
         $dirName = $request->route('dir_name');
         $path = Storage::disk('record')->putFile($dirName, $request->file('record'));
@@ -35,7 +39,7 @@ class RecordController extends Controller
     public function deleteRecordInDir(Request $request) {
         $dirName = $request->route('dir_name');
         $params = $request->all();
-        $response = Storage::disk('record')->delete($dirName . '/' . $params['file_name']);
+        $response = Storage::disk('record')->delete($params['file_name']);
         return $response;
     }
 
